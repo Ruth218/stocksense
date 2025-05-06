@@ -1,0 +1,181 @@
+{% extends "base.html" %}
+
+{% block title %}Market Insights - AI Indian Stock Predictor{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <div class="row mb-4">
+        <div class="col-12">
+            <h1 class="mb-0">
+                <i class="bi bi-newspaper text-primary me-2"></i> Market Insights
+            </h1>
+            <p class="text-muted">Stay updated with market indices, news, and precious metal prices</p>
+        </div>
+    </div>
+
+    <!-- Market Indices Section -->
+    <div class="row mb-5">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0"><i class="bi bi-graph-up-arrow me-2"></i>Market Indices</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        {% for index in indices %}
+                        <div class="col-md-4 mb-3">
+                            <div class="card h-100 {% if index.percent_change > 0 %}border-success{% elif index.percent_change < 0 %}border-danger{% else %}border-secondary{% endif %}">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{ index.name }}</h5>
+                                    <h4 class="mb-2">{{ "{:,.2f}".format(index.last_close) }}</h4>
+                                    <div class="d-flex align-items-center">
+                                        <span class="{% if index.percent_change > 0 %}text-success{% elif index.percent_change < 0 %}text-danger{% endif %}">
+                                            {% if index.percent_change > 0 %}
+                                            <i class="bi bi-caret-up-fill"></i>
+                                            {% elif index.percent_change < 0 %}
+                                            <i class="bi bi-caret-down-fill"></i>
+                                            {% endif %}
+                                            {{ "{:+,.2f}".format(index.change) }} ({{ "{:+,.2f}".format(index.percent_change) }}%)
+                                        </span>
+                                    </div>
+                                    <div class="mt-2">
+                                        <span class="badge {% if index.status == 'Bullish' %}bg-success{% elif index.status == 'Bearish' %}bg-danger{% else %}bg-secondary{% endif %}">
+                                            {{ index.status }}
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Two-column layout for Precious Metals and News -->
+    <div class="row">
+        <!-- Precious Metals Section -->
+        <div class="col-lg-4 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0"><i class="bi bi-coin me-2"></i>Precious Metals</h5>
+                </div>
+                <div class="card-body">
+                    {% for metal in metals %}
+                    <div class="card mb-3 {% if metal.percent_change > 0 %}border-success{% elif metal.percent_change < 0 %}border-danger{% else %}border-secondary{% endif %}">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ metal.name }}</h5>
+                            <h4 class="mb-2">{{ "{:,.2f}".format(metal.price) }}</h4>
+                            <div>
+                                <span class="{% if metal.percent_change > 0 %}text-success{% elif metal.percent_change < 0 %}text-danger{% endif %}">
+                                    {% if metal.percent_change > 0 %}
+                                    <i class="bi bi-caret-up-fill"></i>
+                                    {% elif metal.percent_change < 0 %}
+                                    <i class="bi bi-caret-down-fill"></i>
+                                    {% endif %}
+                                    {{ "{:+,.2f}".format(metal.change) }} ({{ "{:+,.2f}".format(metal.percent_change) }}%)
+                                </span>
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+
+        <!-- Market News Section -->
+        <div class="col-lg-8 mb-4">
+            <div class="card shadow-sm h-100">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0"><i class="bi bi-newspaper me-2"></i>Latest Market News</h5>
+                </div>
+                <div class="card-body">
+                    <div class="list-group list-group-flush">
+                        {% for article in news %}
+                        <a href="{{ article.link }}" target="_blank" class="list-group-item list-group-item-action">
+                            <div class="d-flex w-100 justify-content-between">
+                                <h5 class="mb-1">{{ article.title }}</h5>
+                                <small>{{ article.published.strftime('%d %b, %H:%M') }}</small>
+                            </div>
+                            <small class="text-muted">{{ article.publisher }}</small>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Market Analysis Section -->
+    <div class="row mt-4">
+        <div class="col-12">
+            <div class="card shadow-sm">
+                <div class="card-header bg-transparent">
+                    <h5 class="mb-0"><i class="bi bi-bar-chart-line me-2"></i>Market Analysis</h5>
+                </div>
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h5>Market Sentiment</h5>
+                            <p>
+                                Based on the current indices and technical indicators, the market sentiment appears to be 
+                                {% if indices|selectattr('percent_change', '>', 0)|list|length > indices|length / 2 %}
+                                <span class="badge bg-success">Bullish</span>
+                                {% elif indices|selectattr('percent_change', '<', 0)|list|length > indices|length / 2 %}
+                                <span class="badge bg-danger">Bearish</span>
+                                {% else %}
+                                <span class="badge bg-secondary">Neutral</span>
+                                {% endif %}
+                            </p>
+                            <p>
+                                Key indices like Nifty 50 and Sensex are 
+                                {% if indices|selectattr('name', 'equalto', 'Nifty 50')|first and indices|selectattr('name', 'equalto', 'Nifty 50')|first.percent_change > 0 %}
+                                showing positive momentum
+                                {% elif indices|selectattr('name', 'equalto', 'Nifty 50')|first and indices|selectattr('name', 'equalto', 'Nifty 50')|first.percent_change < 0 %}
+                                trending downward
+                                {% else %}
+                                moving sideways
+                                {% endif %}
+                                today.
+                            </p>
+                        </div>
+                        <div class="col-md-6">
+                            <h5>Commodity Outlook</h5>
+                            <p>
+                                Precious metals like Gold and Silver are 
+                                {% if metals|selectattr('percent_change', '>', 0)|list|length > metals|length / 2 %}
+                                <span class="text-success">gaining value</span>,
+                                {% elif metals|selectattr('percent_change', '<', 0)|list|length > metals|length / 2 %}
+                                <span class="text-danger">declining in value</span>,
+                                {% else %}
+                                <span class="text-secondary">relatively stable</span>,
+                                {% endif %}
+                                which suggests 
+                                {% if metals|selectattr('percent_change', '>', 0)|list|length > metals|length / 2 %}
+                                potential market uncertainty or inflation concerns.
+                                {% elif metals|selectattr('percent_change', '<', 0)|list|length > metals|length / 2 %}
+                                improving confidence in equity markets.
+                                {% else %}
+                                a balanced outlook across asset classes.
+                                {% endif %}
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Auto-refresh the page every 5 minutes
+        setTimeout(function() {
+            window.location.reload();
+        }, 5 * 60 * 1000);
+    });
+</script>
+{% endblock %}
