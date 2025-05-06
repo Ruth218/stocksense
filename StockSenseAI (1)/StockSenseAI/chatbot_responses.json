@@ -1,0 +1,75 @@
+{
+    "default": [
+        "I'm sorry, I don't have information on that topic yet.",
+        "I couldn't find a specific answer for your query. Please try asking about Indian stocks, mutual funds, or forex markets.",
+        "I'm not sure about that. Could you try rephrasing your question?"
+    ],
+    "greetings": [
+        "Hello! How can I help you with Indian stocks, mutual funds, or forex markets today?",
+        "Hi there! Ask me anything about the Indian financial markets!",
+        "Welcome! I'm here to assist with your financial queries about Indian markets."
+    ],
+    "stock_basics": [
+        "Stocks represent ownership in a company. When you buy a share, you own a small piece of that business.",
+        "The Indian stock market primarily operates through the BSE (Bombay Stock Exchange) and NSE (National Stock Exchange).",
+        "To invest in stocks, you need to open a demat account with a registered broker.",
+        "Popular stock indices in India include Nifty 50, Sensex, and Nifty Bank.",
+        "Stock prices fluctuate based on company performance, economic conditions, and market sentiment."
+    ],
+    "mutual_fund_basics": [
+        "Mutual funds pool money from many investors to purchase securities like stocks and bonds.",
+        "There are different types of mutual funds: equity funds, debt funds, hybrid funds, and more.",
+        "Mutual funds in India are regulated by SEBI (Securities and Exchange Board of India).",
+        "SIP (Systematic Investment Plan) allows you to invest a fixed amount in mutual funds at regular intervals.",
+        "ELSS (Equity Linked Savings Scheme) funds offer tax benefits under Section 80C with a 3-year lock-in period."
+    ],
+    "forex_basics": [
+        "Forex (foreign exchange) involves trading one currency for another.",
+        "The Indian Rupee (INR) is the currency of India, and its exchange rate fluctuates against other currencies.",
+        "Major currency pairs involving INR include USD/INR, EUR/INR, GBP/INR, and JPY/INR.",
+        "The Reserve Bank of India (RBI) monitors and occasionally intervenes in the forex market.",
+        "Exchange rates are influenced by factors like interest rates, inflation, political stability, and economic performance."
+    ],
+    "investment_strategies": [
+        "Common investment strategies include value investing, growth investing, and dollar-cost averaging.",
+        "Diversification across asset classes can help reduce risk in your investment portfolio.",
+        "Long-term investing typically yields better results than short-term trading for most investors.",
+        "Asset allocation should be based on your financial goals, risk tolerance, and investment horizon.",
+        "Rebalancing your portfolio periodically helps maintain your desired asset allocation."
+    ],
+    "market_timing": [
+        "Market timing is difficult even for professional investors. A consistent investment approach often works better.",
+        "Rather than trying to time the market, consider regular investments through SIPs (Systematic Investment Plans).",
+        "Historical data shows that staying invested for the long term generally produces better returns than frequent trading.",
+        "\"Time in the market beats timing the market\" is a well-known investment principle.",
+        "Focus on your investment goals rather than short-term market movements."
+    ],
+    "tax": [
+        "Short-term capital gains on equity investments (held for less than 1 year) are taxed at 15% in India.",
+        "Long-term capital gains on equity exceeding ₹1 lakh are taxed at 10% without indexation benefit.",
+        "Dividends from Indian companies are taxable in the hands of the recipient at their applicable income tax slab rate.",
+        "Debt mutual fund gains are now taxed as per the income tax slab rate regardless of holding period.",
+        "Tax-loss harvesting can help offset capital gains with capital losses to reduce tax liability."
+    ],
+    "ipo": [
+        "IPO (Initial Public Offering) is when a private company offers shares to the public for the first time.",
+        "To apply for IPOs in India, you need a demat account, trading account, and sufficient funds.",
+        "IPO applications can be made through your broker's website/app or through the UPI mandate system.",
+        "SEBI has specific allocation quotas for retail investors, qualified institutional buyers, and high net-worth individuals in IPOs.",
+        "Review the company's prospectus before investing in an IPO to understand the business, risks, and use of proceeds."
+    ],
+    "demat": [
+        "A demat account holds shares and securities in electronic form, eliminating physical certificates.",
+        "In India, demat accounts are operated by depositories like NSDL and CDSL through depository participants (usually brokers).",
+        "You need both a demat account and a trading account to buy and sell securities in the Indian market.",
+        "Demat accounts have annual maintenance charges and other transaction-related fees.",
+        "One demat account can hold various securities including shares, bonds, mutual funds, and ETFs."
+    ],
+    "sensex_nifty": [
+        "Sensex is the benchmark index of the Bombay Stock Exchange (BSE) comprising 30 large, well-established companies.",
+        "Nifty 50 is the benchmark index of the National Stock Exchange (NSE) comprising 50 large companies across sectors.",
+        "Both Sensex and Nifty are considered barometers of the Indian equity market.",
+        "Nifty Bank is a sectoral index tracking 12 major banking stocks in India.",
+        "Index funds and ETFs are available that track these indices, allowing investors to invest in the entire market."
+    ]
+}
