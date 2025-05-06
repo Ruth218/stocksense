@@ -40,6 +40,7 @@ app.config["SQLALCHEMY_ENGINE_OPTIONS"] = {
     "pool_pre_ping": True,
 }
 
+app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///site.db'
 # Initialize extensions with app
 db.init_app(app)
 login_manager.init_app(app)
